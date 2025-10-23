@@ -1,0 +1,229 @@
+🔥 Perfect — **prototype inheritance** is one of the *core* (and most misunderstood) JavaScript topics — and a **favorite** for frontend interviewers.
+
+Below is a **structured list** of **prototype inheritance questions** — starting from **basic → intermediate → advanced → deep-dive** (with hints and examples).
+
+---
+
+## 🧩 **A. Basics — Core Understanding**
+
+These test whether you know how JavaScript inheritance actually works.
+
+1. 🧠 What is **prototype inheritance** in JavaScript?
+2. What is the **`__proto__`** property?
+3. Difference between **`prototype`** and **`__proto__`**.
+4. What does `Object.getPrototypeOf()` do?
+5. What does `Object.setPrototypeOf()` do?
+6. How do all objects in JavaScript inherit properties by default?
+7. What is the **prototype chain**?
+8. What is the **top of the prototype chain** in JavaScript?
+9. What happens if a property isn’t found on an object?
+10. How can you check if a property exists on an object itself vs its prototype?
+
+```js
+console.log(obj.hasOwnProperty('prop')); // vs 'prop' in obj
+```
+
+---
+
+## ⚙️ **B. Intermediate — Practical Application**
+
+11. How do constructor functions use prototypes?
+
+```js
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.sayHi = function() {
+  return `Hi, I'm ${this.name}`;
+};
+```
+
+12. What happens if you reassign a constructor’s prototype after creating instances?
+13. What is the difference between methods defined inside a constructor vs on its prototype?
+14. How do you check if an object was created from a specific constructor?
+15. What is the **constructor property** in a prototype?
+
+```js
+console.log(Person.prototype.constructor === Person); // true
+```
+
+16. How can you implement **inheritance between two constructor functions**?
+
+```js
+function Employee(name, role) {
+  Person.call(this, name);
+  this.role = role;
+}
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+```
+
+---
+
+## ⚡ **C. Advanced — Classes and Prototype Internals**
+
+17. How are ES6 classes related to prototypes under the hood?
+18. What is the prototype of a class method?
+19. What’s the difference between **static methods** and **prototype methods** in classes?
+20. How does the `super` keyword work with prototype chains?
+21. Explain how inheritance works when using `class A extends B`.
+22. Can you overwrite a built-in prototype like `Array.prototype`? What are the consequences?
+23. How does `instanceof` work internally?
+
+👉 Hint: It checks the **prototype chain**.
+
+---
+
+## 🧱 **D. Deep Dive — Trick & Hard Questions**
+
+24. What will be the output of the following?
+
+```js
+function A() {}
+A.prototype.x = 10;
+
+const a1 = new A();
+a1.x = 20;
+
+const a2 = new A();
+console.log(a1.x, a2.x);
+```
+
+*(Answer: 20, 10 — because `a1` shadows prototype property.)*
+
+---
+
+25. What happens here?
+
+```js
+function A() {}
+A.prototype = { x: 10 };
+
+const a1 = new A();
+console.log(a1.constructor === A);
+```
+
+*(Answer: false — because reassigning prototype breaks constructor link.)*
+
+---
+
+26. How can you restore the `constructor` property manually?
+    → `A.prototype.constructor = A;`
+
+---
+
+27. Output-based:
+
+```js
+const obj = { a: 1 };
+const proto = { b: 2 };
+Object.setPrototypeOf(obj, proto);
+
+console.log(obj.b); // ?
+console.log(proto.a); // ?
+```
+
+*(Answer: `obj.b = 2`, `proto.a = undefined`)*
+
+---
+
+28. What’s the difference between:
+
+```js
+obj.__proto__ = anotherObj
+```
+
+and
+
+```js
+Object.create(anotherObj)
+```
+
+---
+
+29. Can prototype chains be circular?
+    *(No, circular prototype chains cause TypeError.)*
+
+---
+
+30. How does JavaScript’s **method lookup** work step-by-step in a deep prototype chain?
+
+---
+
+31. Can you explain why **functions themselves** have a prototype?
+
+```js
+function Foo() {}
+console.log(typeof Foo.prototype); // "object"
+```
+
+---
+
+32. Why do even primitive wrappers like `String` and `Number` have prototypes?
+    *(Because primitives get auto-boxed when methods are called, e.g. `'abc'.toUpperCase()`.)*
+
+---
+
+33. Why do arrays and objects inherit from different prototypes?
+
+```js
+console.log(Object.getPrototypeOf([]) === Array.prototype); // true
+console.log(Object.getPrototypeOf({}) === Object.prototype); // true
+```
+
+---
+
+34. Output-based tricky one:
+
+```js
+Object.prototype.sayHi = () => 'hi';
+const arr = [];
+console.log(arr.sayHi());
+```
+
+*(Answer: "hi" — since Array → Object → Object.prototype)*
+
+---
+
+35. Can you polyfill a method using prototype?
+
+```js
+Array.prototype.last = function() {
+  return this[this.length - 1];
+}
+console.log([1,2,3].last()); // 3
+```
+
+---
+
+36. What’s the danger of modifying native prototypes like `Array.prototype` or `Object.prototype`?
+
+*(It can break built-in behaviors and cause conflicts.)*
+
+---
+
+37. How does **prototype delegation** improve memory usage?
+    *(Because shared methods live once on the prototype, not duplicated in every instance.)*
+
+---
+
+38. What is the **difference between inheritance and composition** in JS?
+    *(Prototype inheritance shares behavior; composition builds behavior by combining objects.)*
+
+---
+
+### 🚀 Bonus — Real Interview Challenge
+
+**Implement your own version of `Object.create()`:**
+
+```js
+function create(proto) {
+  function F() {}
+  F.prototype = proto;
+  return new F();
+}
+```
+
+---
+
+Would you like me to follow this up with **code-based prototype interview exercises** (like “predict the output” style) — ranging from easy to very tough?
