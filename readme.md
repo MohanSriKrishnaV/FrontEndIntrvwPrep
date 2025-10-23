@@ -12,20 +12,20 @@ It covers **JavaScript**, **React**, **HTML/CSS**, and other essential topics.
 
 ## 🗂 **Topics Covered**
 ### 🔹 **JavaScript**
-- ✅ Variables, Scope, Hoisting  
-- ✅ Functions, Closures, Prototypes  
-- ✅ ES6+ Features  
-- ✅ Async/Await, Fetch API  
+
 
 ### 🔹 **React**
-- ⚛️ Components & Props  
-- ⚛️ State Management  
-- ⚛️ Hooks (`useState`, `useEffect`, etc.)  
+
 
 ### 🔹 **HTML & CSS**
-- 🌐 Semantic HTML  
-- 🎨 Flexbox & Grid  
-- 📱 Responsive Design  
+
+
+
+
+### 🔹 **JS**
+--prototypes
+--async operations
+  
 
 ---
 

@@ -1,0 +1,90 @@
+Node.js comes with several **built-in (core) APIs** that you can use without installing any external packages. Here are the most commonly used ones:
+
+---
+
+### ✅ **1. `fs` (File System)**
+- For reading, writing, and manipulating files.
+```javascript
+const fs = require('fs');
+fs.readFile('file.txt', 'utf8', (err, data) => console.log(data));
+```
+
+---
+
+### ✅ **2. `path`**
+- For working with file and directory paths.
+```javascript
+const path = require('path');
+console.log(path.join(__dirname, 'file.txt'));
+```
+
+---
+
+### ✅ **3. `http`**
+- For creating HTTP servers and making requests.
+```javascript
+const http = require('http');
+http.createServer((req, res) => res.end('Hello World')).listen(3000);
+```
+
+---
+
+### ✅ **4. `os`**
+- For getting system-related info (CPU, memory, etc.).
+```javascript
+const os = require('os');
+console.log(os.platform(), os.totalmem());
+```
+
+---
+
+### ✅ **5. `events`**
+- For creating and handling custom events.
+```javascript
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+emitter.on('greet', () => console.log('Hello!'));
+emitter.emit('greet');
+```
+
+---
+
+### ✅ **6. `crypto`**
+- For encryption, hashing, and secure operations.
+```javascript
+const crypto = require('crypto');
+console.log(crypto.randomBytes(16).toString('hex'));
+```
+
+---
+
+### ✅ **7. `util`**
+- For utility functions like `promisify`.
+```javascript
+const util = require('util');
+```
+
+---
+
+### ✅ **8. `stream`**
+- For handling streaming data (files, network).
+```javascript
+const stream = require('stream');
+```
+
+---
+
+### ✅ **9. `url`**
+- For parsing and formatting URLs.
+```javascript
+const url = require('url');
+```
+
+---
+
+### ✅ **10. `querystring`**
+- For working with query strings in URLs.
+
+---
+
+👉 Do you want me to **create a cheat sheet with examples for all these Node.js built-in modules** or **a diagram showing how these core APIs fit into Node’s architecture**?

@@ -1,0 +1,83 @@
+JavaScript provides many **built-in APIs** that make it easier to interact with the browser, manipulate data, and perform common tasks. Here are the most important ones:
+
+---
+
+### ✅ **1. DOM API**
+- Used to interact with HTML and CSS.
+- Examples:
+  ```javascript
+  document.querySelector('#id');
+  element.classList.add('active');
+  ```
+
+---
+
+### ✅ **2. Fetch API**
+- For making HTTP requests.
+```javascript
+fetch('https://api.example.com')
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+---
+
+### ✅ **3. Console API**
+- For logging and debugging.
+```javascript
+console.log('Hello');
+console.error('Error');
+```
+
+---
+
+### ✅ **4. Storage API**
+- **LocalStorage** and **SessionStorage** for storing data in the browser.
+```javascript
+localStorage.setItem('key', 'value');
+console.log(localStorage.getItem('key'));
+```
+
+---
+
+### ✅ **5. Geolocation API**
+- Get user’s location.
+```javascript
+navigator.geolocation.getCurrentPosition(pos => console.log(pos));
+```
+
+---
+
+### ✅ **6. Canvas API**
+- For drawing graphics.
+```javascript
+const ctx = document.querySelector('canvas').getContext('2d');
+ctx.fillRect(10, 10, 100, 100);
+```
+
+---
+
+### ✅ **7. Web Storage & IndexedDB**
+- Persistent client-side storage.
+
+---
+
+### ✅ **8. Web Workers API**
+- For running scripts in background threads.
+
+---
+
+### ✅ **9. Notifications API**
+- Show system notifications.
+```javascript
+Notification.requestPermission().then(() => new Notification('Hello!'));
+```
+
+---
+
+### ✅ **10. Audio/Video APIs**
+- **MediaDevices**, **WebRTC**, **AudioContext** for multimedia.
+
+---
+
+👉 Do you want me to **create a cheat sheet with code examples for all these APIs** or **a visual diagram grouping them by category (DOM, Network, Storage, Multimedia)**?
