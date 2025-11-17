@@ -1,8 +1,8 @@
 import logo from '../assets/logo.png';
 
-export default function Header() {
+export default function Header() { 
   return (
-    <header>
+    <header className='flex flex-row items-centers'>
       <img src={logo} alt="A canvas" />
       <h1>ReactArt</h1>
       <p>A community of artists and art-lovers.</p>
